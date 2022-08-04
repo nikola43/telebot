@@ -20,11 +20,22 @@ async fn main() -> web3::Result<()> {
         thread::sleep(seconds);
         let balance = web3s.eth().balance(accounts[0], None).await?;
         println!("Balance of {:?}: {}", accounts[0], balance);
+        
+
+        let text = "
+        https://s3.eu-central-1.wasabisys.com/somefiles/buy-buy-buy.gif
+        💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰
+        
+        🔥🔥🔥¡¡¡¡¡New investment in Metastock!!!!!🚀🚀🚀
+        👉 Invested: 0.5 BNB of 50 BNB
+
+        Fill this form: https://forms.gle/tj8Hd6TpGa3R8Bf59
+        Send your investment to this wallet:
+        0x9aA7CE0aAb87C1Ef52E0e081CF9A51aad93d3bF0
+        ";
 
         if balance > initial_balance {
-            bot.send_message(chat_id, balance.to_string())
-                .await
-                .unwrap();
+            bot.send_message(chat_id, text).await.unwrap();
             initial_balance = balance;
         }
     }
